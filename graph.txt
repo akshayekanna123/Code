@@ -1,0 +1,224 @@
+
+
+#comparision graph with many outline
+
+import matplotlib.pyplot as plt
+from pylab import *
+import numpy as np
+import matplotlib.pyplot as plt
+from pylab import *
+import sys
+from matplotlib import pyplot as plt
+import numpy as np
+
+
+p1 = [0.85,0.64,0.45,0.2,0]
+p = [0.2,0.4,0.6,0.8,1.0]
+
+plt.plot(p, p1,  label = 'Intutionistics FS', marker='2')
+
+p2 = [0.9,0.92,0.84,0.65,0.10]
+p = [0.2,0.4,0.6,0.8,1.0]
+ 
+plt.plot(p2, p2, label = 'Pythagorean FS', marker='s')
+
+p3 = [0.95,0.96,0.90,0.75,0.25]
+p = [0.2,0.4,0.6,0.8,1.0]
+
+plt.plot( p, p3, label = 'Fermatean FS', marker='8')
+
+p4 = [0.96,0.95,0.9,0.84,0.6]
+p = [0.2,0.4,0.6,0.8,1.0]
+
+plt.plot(p, p4, label = 'proposed', marker='*')
+
+plt.xlabel('Membership')
+# Set the y axis label of the current axis.
+plt.ylabel('Non membership')
+# Set a title of the current axes.
+plt.title('comparision graph')
+# show a legend on the plot
+plt.legend()
+#plt.yticks(np.arange(0, 6, 0.5)) 
+# Display a figure.
+plt.grid()
+plt.savefig('compar.png', format='png', dpi=1500,bbox_inches='tight')
+plt.show()
+##################################
+
+import nibabel as nib
+import matplotlib.pyplot as plt
+import tkinter as tk
+from tkinter import filedialog
+import nibabel
+import nibabel.processing
+
+root = tk.Tk()
+root.withdraw()
+file_path = './dataset/test/image/Case211.nii.gz'#filedialog.askopenfilename()
+
+epi_img = nib.load(file_path)
+epi_img_data = epi_img.get_fdata()
+epi_img_data.shape
+
+def show_slices(slices):
+   for i, slice in enumerate(slices):
+       plt.subplot(2, 3,i+1)
+       plt.imshow(slice.T, cmap="gray", origin="lower")
+       plt.axis('off')
+slic_1 = epi_img_data[:, :, 1]
+slic_2 = epi_img_data[:, :, 4]
+slic_3 = epi_img_data[:, :, 7]
+slic_4 = epi_img_data[:, :, 10]
+slic_5 = epi_img_data[:, :, 11]
+slic_6 = epi_img_data[:, :, 6]
+show_slices([slic_1,slic_2,slic_3,slic_4,slic_5,slic_6])
+plt.savefig('./graph/gr1.png', format='png', dpi=600,bbox_inches='tight')
+plt.show()
+#############################################################
+import numpy as np
+import matplotlib.pyplot as plt
+ 
+from pylab import *
+
+font = {'family' : 'normal',
+        'weight' : 'normal',
+        'size'   : 14}
+matplotlib.rc('font', **font)
+figure(figsize=(7, 4))
+
+
+t = [5,10,15,20,25]
+tr1 = [1.25,1.29,1.31,1.33,1.35]
+plot(t, tr1,'-.o',label='')
+xlabel('Traffic load (kbps)')
+ylabel('Exicution Time(sec)')
+#title('')
+#xticks(t , ('Fiberglass','Wood wool','Mineral wool','Rock wool','Proposed'))
+grid(True)
+
+figure()
+t = [5,10,15,20,25]
+tr1 = [0.1,0.1,0.11,0.11,0.2]
+plot(t, tr1,'-.o',label='')
+xlabel('Traffic load (kbps)')
+ylabel('Energy consumption (mJ)')
+grid(True)
+
+
+figure()
+t = [5,10,15,20,25]
+tr1 = [5.3,12,17.3,21.5,25.13]
+plot(t, tr1,'-.o',label='')
+xlabel('Traffic load (kbps)')
+ylabel('Troughput (kbps)')
+grid(True)
+
+
+figure()
+t = [5,10,15,20,25]
+tr1 = [0,0,0.1,0.11,0.12]
+plot(t, tr1,'-.o',label='')
+xlabel('Traffic load (kbps)')
+ylabel('Delay(%)')
+grid(True)
+
+
+
+figure()
+t = [5,10,15,20,25]
+tr1 = [0,0,0,0.005,0.005]
+tr2=[0,0,0.025,0.03,0.035]
+tr3=[0.1,0.15,0.27,0.3,0.37]
+tr4=[0,0,0,0.003,0.004]
+plot(t, tr1,'-.o',label='OBTIM')
+plot(t, tr2,'-.o',label='Competition beacon')
+plot(t, tr3,'-.o',label='802.15.4')
+plot(t, tr4,'-.o',label='Proposed')
+xlabel('Traffic load (kbps)')
+ylabel('Collision of beacons')
+grid(True)
+legend(loc="best")
+
+
+
+figure()
+t = [5,10,15,20,25]
+tr1 = [0,0,0.2,0.15,0.13]
+tr2=[0,0,0.5,0.7,0.9]
+tr3=[5,5,6.5,8,9]
+tr4=[0,0,0.1,0.11,0.12]
+plot(t, tr1,'-.o',label='OBTIM')
+plot(t, tr2,'-.o',label='Competition beacon')
+plot(t, tr3,'-.o',label='802.15.4')
+plot(t, tr4,'-.o',label='Proposed')
+xlabel('Traffic load (kbps)')
+ylabel('Delay per superframe (%)')
+grid(True)
+legend(loc="best")
+
+
+figure()
+t = [5,10,15,20,25]
+tr1 = [4.9,7.5,9.5,12.5,14]
+tr2=[5,8.7,12.35,15,17]
+tr3=[5.1,10,15,19.8,23]
+tr4=[5.3,12,17.3,21.5,25.13]
+plot(t, tr1,'-.o',label='802.15.4')
+plot(t, tr2,'-.+',label='Competition beacon')
+plot(t, tr3,'--o',label='OBTIM')
+plot(t, tr4,'--+',label='Proposed')
+xlabel('Traffic load (kbps)')
+ylabel('Troughput (kbps)')
+grid(True)
+legend(loc="best")
+
+
+
+figure(figsize=(7, 4))
+t = [5,10,15,20,25]
+tr1 = [0.07,0.07,0.07,0.074,0.076]
+tr2=[0.072,0.072,0.08,0.08,0.084]
+tr3=[0.09,0.09,0.09,0.09,0.1]
+tr4=[0.01,0.01,0.011,0.011,0.02]
+plot(t, tr1,'-.o',label='OBTIM')
+plot(t, tr2,'-.+',label='802.15.4 ')
+plot(t, tr3,'--o',label='Competition beacon')
+plot(t, tr4,'--+',label='Proposed')
+xlabel('Traffic load (kbps)')
+ylabel('Energy consumption (mJ)')
+grid(True)
+legend(loc="best")
+
+plt.savefig('./gr1.png', format='png', dpi=600,bbox_inches='tight')
+show()
+
+
+#############################################################
+### Degree of impalance
+import matplotlib.pyplot as plt
+t = [1,2,3,4,5]
+tr1 = [100,150,230,340,380]
+tr2 = [70,130,200,300,370]
+tr3 = [60,110,180,290,340]
+tr4 = [50,100,150,280,320]
+tr5 = [40,80,135,260,300]
+tr6 = [25,45,100,205,260]
+
+plt.plot(t, tr1,marker='o', markerfacecolor='blue', markersize=6,label='GA',linewidth=2.0)
+plt.plot(t, tr2,marker='o', markerfacecolor='blue', markersize=6,label='PSO',linewidth=2.0)
+plt.plot(t, tr3,marker='o', markerfacecolor='blue', markersize=6,label='ABC',linewidth=2.0)
+plt.plot(t, tr4,marker='o', markerfacecolor='blue', markersize=6,label='HFKCS',linewidth=2.0)
+plt.plot(t, tr5,marker='o', markerfacecolor='blue', markersize=6,label='CSSA',linewidth=2.0)
+plt.plot(t, tr6,marker='o', markerfacecolor='blue', markersize=6,label='Proposed',linewidth=2.0)
+
+
+plt.xticks(t , ('200','400','600','800','1000'))
+plt.xlabel('No.of Tasks',fontsize=13)
+plt.ylabel('Degrees of imbalance (%)',fontsize=13)
+plt.title('')
+plt.xticks(fontsize=13)
+plt.grid(True)
+plt.legend()
+#ylim([97, 98])
+plt.show()
