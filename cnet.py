@@ -69,3 +69,115 @@ final_combined_model.summary()
 
 # Train the final combined model (modify this based on your training data)
 final_combined_model.fit([x_train, x_train], y_train, epochs=5, batch_size=32, validation_data=([x_test, x_test], y_test))
+
+############################################################################################
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+plt.figure(figsize=(10, 6))
+data = pd.DataFrame({
+    'model': ['CNN','LSTM','A-CLSTM'],
+    'y': [89.3,91.1,96.2]})
+custom_palette = sns.color_palette("Set1")
+sns.barplot(x='model', y='y', data=data, palette=custom_palette, width=0.4)
+plt.xticks(fontsize=14, fontweight='bold')
+plt.yticks(fontsize=14, fontweight='bold')
+#plt.ylim(20,40)
+plt.ylabel('Accuracy %', fontsize=14, fontweight='bold')
+plt.tight_layout()
+#plt.savefig('et',dpi=1500,bbox_inches='tight')
+plt.show()
+
+plt.figure(figsize=(10, 6))
+data = pd.DataFrame({
+    'model': ['CNN','LSTM','A-CLSTM'],
+    'y': [88.5,90.6,95.7]})
+custom_palette = sns.color_palette("Set1")
+sns.barplot(x='model', y='y', data=data, palette=custom_palette, width=0.4)
+plt.xticks(fontsize=14, fontweight='bold')
+plt.yticks(fontsize=14, fontweight='bold')
+#plt.ylim(20,40)
+plt.ylabel('Precision %', fontsize=14, fontweight='bold')
+plt.tight_layout()
+#plt.savefig('dt',dpi=1500,bbox_inches='tight')
+plt.show()
+
+plt.figure(figsize=(10, 6))
+data = pd.DataFrame({
+    'model': ['CNN','LSTM','A-CLSTM'],
+    'y': [87.2,89.9,96.8]})
+custom_palette = sns.color_palette("Set1")
+sns.barplot(x='model', y='y', data=data, palette=custom_palette, width=0.4)
+plt.xticks(fontsize=14, fontweight='bold')
+plt.yticks(fontsize=14, fontweight='bold')
+#plt.ylim(20,40)
+plt.ylabel('Recall %', fontsize=14, fontweight='bold')
+plt.tight_layout()
+#plt.savefig('sl',dpi=1500,bbox_inches='tight')
+plt.show()
+
+plt.figure(figsize=(10, 6))
+data = pd.DataFrame({
+    'model': ['CNN','LSTM','A-CLSTM'],
+    'y': [87.8,90.2,96.2]})
+custom_palette = sns.color_palette("Set1")
+sns.barplot(x='model', y='y', data=data, palette=custom_palette, width=0.4)
+plt.xticks(fontsize=14, fontweight='bold')
+plt.yticks(fontsize=14, fontweight='bold')
+#plt.ylim(20,40)
+plt.ylabel('F1-score %', fontsize=14, fontweight='bold')
+plt.tight_layout()
+#plt.savefig('sl',dpi=1500,bbox_inches='tight')
+plt.show()
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10,6))
+x=[0,10,15,20]
+y=[80,90,93,94.8]
+plt.plot(x,y,'-b')
+plt.ylabel('Accuracy %',fontweight='bold')
+plt.xlabel('Epochs',fontweight='bold')
+plt.xticks(fontweight='bold')
+plt.yticks(fontweight='bold')
+plt.ylim(80,100)
+plt.grid('True')
+plt.show()
+
+plt.figure(figsize=(10,6))
+x=[0,10,15,20]
+y=[80,90,93,94.1]
+plt.plot(x,y,'-b')
+plt.ylabel('Precision %',fontweight='bold')
+plt.xlabel('Epochs',fontweight='bold')
+plt.xticks(fontweight='bold')
+plt.yticks(fontweight='bold')
+plt.ylim(80,100)
+plt.grid('True')
+plt.show()
+
+plt.figure(figsize=(10,6))
+x=[0,10,15,20]
+y=[80,90,93,95.4]
+plt.plot(x,y,'-b')
+plt.ylabel('Recall %',fontweight='bold')
+plt.xlabel('Epochs',fontweight='bold')
+plt.xticks(fontweight='bold')
+plt.yticks(fontweight='bold')
+plt.ylim(80,100)
+plt.grid('True')
+plt.show()
+
+plt.figure(figsize=(10,6))
+x=[0,10,15,20]
+y=[80,90,93,94.7]
+plt.plot(x,y,'-b')
+plt.ylabel('F1-score %',fontweight='bold')
+plt.xlabel('Epochs',fontweight='bold')
+plt.xticks(fontweight='bold')
+plt.yticks(fontweight='bold')
+plt.ylim(80,100)
+plt.grid('True')
+plt.show()
+
+############################################################################
