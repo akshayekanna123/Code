@@ -1,0 +1,37 @@
+from pdf2image import convert_from_path
+import easyocr
+import numpy as np
+
+# PDF file path
+pdf_path = r"E:\akshaye\akul\New folder\sample.pdf"
+
+# Initialize OCR reader
+reader = easyocr.Reader(['en'])
+
+# Convert PDF pages directly to images
+pages = convert_from_path(pdf_path)
+
+# Store complete extracted text
+all_text = ""
+
+# Process each page directly without saving PNG
+for i, page in enumerate(pages):
+
+    # Convert PIL image to numpy array
+    image_np = np.array(page)
+
+    # OCR extraction
+    result = reader.readtext(image_np)
+
+    # Extract only text
+    page_text = "\n".join([text[1] for text in result])
+
+    print(f"\n========== PAGE {i + 1} ==========\n")
+    print(page_text)
+
+    # Append all text
+    all_text += page_text + "\n"
+
+# Final combined text
+print("\n=========== COMPLETE PDF TEXT ===========\n")
+print(all_text)
